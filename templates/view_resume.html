@@ -418,29 +418,17 @@ section:last-child {
 			</div>
 			
 			<div class="sectionContent">
-				<article>
-					<h2>Job Title at Project</h2>
-					<p class="subDetails">April 2011 - Present</p>
-					<p> Developed new admin panel, which improved internal operating efficiency by over 40%.
-Created comprehensive testing regime using RSpec to ensure bug-free code.
-Rebuilt entire website with up to date technologies and frameworks.</p>
-				</article>
 				
-				<article>
-					<h2>Job Title at Projects</h2>
-					<p class="subDetails">Janruary 2007 - March 2011</p>
-					<p>Developed new admin panel, which improved internal operating efficiency by over 40%.
-Created comprehensive testing regime using RSpec to ensure bug-free code.
-Rebuilt entire website with up to date technologies and frameworks.</p>
+					{% for pr in pro %}   
+					
+<h2>{{pr.pname}}</h2>
+<article>
+					<p class="subDetails">{{pr.pduration}}</p>
+					<p> {{pr.pdesc}}</p>
 				</article>
+{% endfor %}
 				
-				<article>
-					<h2>Job Title at Projects</h2>
-					<p class="subDetails">October 2004 - December 2006</p>
-					<p>Developed new admin panel, which improved internal operating efficiency by over 40%.
-Created comprehensive testing regime using RSpec to ensure bug-free code.
-Rebuilt entire website with up to date technologies and frameworks.</p>
-				</article>
+				
 			</div>
 			<div class="clear"></div>
 		</section>
@@ -453,14 +441,10 @@ Rebuilt entire website with up to date technologies and frameworks.</p>
 			
 			<div class="sectionContent">
 				<ul class="keySkills">
-					<li>A Key Skill</li>
-					<li>A Key Skill</li>
-					<li>A Key Skill</li>
-					<li>A Key Skill</li>
-					<li>A Key Skill</li>
-					<li>A Key Skill</li>
-					<li>A Key Skill</li>
-					<li>A Key Skill</li>
+					
+					{% for sk in ski %}   
+<li>{{sk.skill}}</li>
+{% endfor %}
 				</ul>
 			</div>
 			<div class="clear"></div>
@@ -473,17 +457,16 @@ Rebuilt entire website with up to date technologies and frameworks.</p>
 			</div>
 			
 			<div class="sectionContent">
-				<article>
-					<h2>College/University</h2>
-					<p class="subDetails">Qualification</p>
-					<p>School Name,University Name,Percentage,Passing Year</p>
-				</article>
 				
-				<article>
-					<h2>College/University</h2>
-					<p class="subDetails">Qualification</p>
-					<p>School Name,University Name,Percentage,Passing Year.</p>
+				{% for ed in edu %}   
+<article>
+					<h2>{{ed.std}}</h2>
+					<p class="subDetails">{{ed.year}}</p>
+					<p>{{ed.college}}</p>
 				</article>
+{% endfor %}
+
+				
 			</div>
 			<div class="clear"></div>
 		</section>

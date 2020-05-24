@@ -2,6 +2,9 @@
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <title>Profile Maker
@@ -43,13 +46,193 @@ body {
         </li>
         
         </ul>
-        <img src="{{user.ppic.url}}" width="50" height="50" class="d-inline-block align-top" alt="" loading="lazy">&nbsp;&nbsp;&nbsp;&nbsp;
-        <form class="form-inline my-2 my-lg-0">
         
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-            Signout
+        
+        
+
+
+
+        <div class="dropdown">
+    <button class="btn btn-primary" type="button" data-toggle="dropdown">Profile
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+    <li class="divider"></li>
+    <i><h6>{{user.name}}</h6></i>
+    <i><h6>{{user.email}}</h6></i>
+    <li class="divider"></li>
+      <li><a data-toggle="modal" data-target="#exampleModal1" href="#">Education</a></li>
+      <li><a data-toggle="modal" data-target="#exampleModal2" href="#">Projects</a></li>
+      <li><a data-toggle="modal" data-target="#exampleModal3" href="#">Skills</a></li>
+      <li><a data-toggle="modal" data-target="#exampleModal4" href="#">Languages</a></li>
+      <li class="divider"></li>
+      <li><a data-toggle="modal" data-target="#exampleModal" href="#">Signout</a></li>
+    </ul>
+  </div>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="{{user.ppic.url}}" width="50" height="50" class="d-inline-block align-top" alt="" loading="lazy" class="border border-primary">
+        
+
+
+
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Education:</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {% for ed in edu %}   
+<div class="alert alert-primary" role="alert">
+  {{ed.std}}<br>
+    {{ed.college}}<br>
+    {{ed.year}}
+</div>        
+    <br>       
+{% endfor %}
+
+
+<i><h6>No More Details</h6><i>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <form class="form-inline my-2 my-lg-0">
+        
+        <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#addedu">
+            Add Education
         </button>
         </form>
+                    
+                </div>
+                </div>
+                </div>
+            </div>
+            </div>
+
+
+
+
+           
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Projects:</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    
+{% for pr in pro %}   
+<div class="alert alert-primary" role="alert">
+  {{pr.pname}}<br>
+    {{pr.pdesc}}<br>
+    {{pr.pduration}}
+</div>        
+    <br>       
+{% endfor %}
+
+<i><h6>No More Details</h6><i>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <form class="form-inline my-2 my-lg-0">
+        
+        <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#addpro">
+            Add Project
+        </button>
+        </form>
+                </div>
+                </div>
+                </div>
+            </div>
+            </div>
+
+
+
+
+
+<div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Skills:</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {% for sk in ski %}   
+<div class="alert alert-primary" role="alert">
+  {{sk.skil}}<br>
+</div>        
+    <br>       
+{% endfor %}
+
+
+<i><h6>No More Details</h6><i>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <form class="form-inline my-2 my-lg-0">
+        
+        <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#addskil">
+            Add Skill
+        </button>
+        </form>
+                </div>
+                </div>
+                </div>
+            </div>
+            </div>
+
+
+
+
+
+<div class="modal fade" id="exampleModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Languages:</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {% for la in lan %}   
+<div class="alert alert-primary" role="alert">
+  {{la.speak}}<br>
+</div>        
+    <br>       
+{% endfor %}
+
+
+<i><h6>No More Details</h6><i>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <form class="form-inline my-2 my-lg-0">
+        
+        <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#addlang">
+            Add Language
+        </button>
+        </form>
+                </div>
+                </div>
+                </div>
+            </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+  
 
         
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -64,16 +247,14 @@ body {
                 <div class="modal-body">
                     <form action="{% url 'signout' %}">
                     {% csrf_token %}
-                    <h6>Hello {{ user.name }}</h6><br>
+                    <h6>Hello {{ user.name }}</h6>
                     <h6> Are You Confirm To Logout</h6> 
                     <div class="modal-footer">
-                    <input type="submit" value="Confirm">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Confirm</button>
                 </div>
                     </form>
-
-
                 </div>
-                
                 </div>
             </div>
             </div>
@@ -85,6 +266,165 @@ body {
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
+<div class="modal fade" id="addedu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addedu">Add Educational Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{% url 'addedu' %}" method="post">
+                    {% csrf_token %}
+                     
+<div class="form-group row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">School/College Name:</label>
+                        <div class="col-sm-10">
+                        <input type="text" name="college" class="form-control" id="inputPassword" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">Standard:</label>
+                        <div class="col-sm-10">
+                        <input type="text" name="std" class="form-control" id="inputPassword" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">Year:</label>
+                        <div class="col-sm-10">
+                        <input type="text" name="year" class="form-control" id="inputPassword" required>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Confirm</button>
+                </div>
+                    </form>
+                </div>
+                </div>
+            </div>
+            </div>
+
+
+
+<div class="modal fade" id="addpro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addpro">Add Project Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{% url 'addpro' %}" method="post">
+                    {% csrf_token %}
+                     
+                    <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">Project Name:</label>
+                        <div class="col-sm-10">
+                        <input type="text" name="pname" class="form-control" id="inputPassword" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">Project Duration:</label>
+                        <div class="col-sm-10">
+                        <input type="text" name="pduration" class="form-control" id="inputPassword" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">Project Name:</label>
+                        <div class="col-sm-10">
+                        <textarea name="pdesc" rows="4" cols="50"></textarea>
+                        </div>
+                    </div>
+                     
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Confirm</button>
+                </div>
+                    </form>
+                </div>
+                </div>
+            </div>
+            </div>
+
+
+
+<div class="modal fade" id="addskil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addskil">Add One More Skill</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{% url 'addski' %}" method="post">
+                    {% csrf_token %}
+                     
+<div class="form-group row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">Skill:</label>
+                        <div class="col-sm-10">
+                        <input type="text" name="skil" class="form-control" id="inputPassword" required>
+                        </div>
+                    </div>
+                     
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Confirm</button>
+                </div>
+                    </form>
+                </div>
+                </div>
+            </div>
+            </div>
+
+
+
+<div class="modal fade" id="addlang" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addlang">Add Language You Know</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{% url 'addlan' %}" method="post">
+                    {% csrf_token %}
+                     
+<div class="form-group row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">Language:</label>
+                        <div class="col-sm-10">
+                        <input type="text" name="speak" class="form-control" id="inputPassword" required>
+                        </div>
+                    </div>
+                     
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Confirm</button>
+                </div>
+                    </form>
+                </div>
+                </div>
+            </div>
+            </div>
+            
+
+
+
+
+
+
+{% for message in messages %}
+    <center><h2 style="color:green;">{{message}}</h2></center>
+    {% endfor %}
 </body>
 </html>
 

@@ -18,16 +18,14 @@ class registration(models.Model):
 
 
 class skill(models.Model):
-    sno=models.CharField(max_length=50)
     email=models.EmailField(max_length=100)
-    skill=models.CharField(max_length=100)
+    skil=models.CharField(max_length=100)
     currentdate= models.DateField(default=timezone.now)
 
     def __str__(self):
         return self.email
 
 class education(models.Model):
-    sno=models.CharField(max_length=50)
     email=models.EmailField(max_length=100)
     college=models.CharField(max_length=50)
     std=models.CharField(max_length=100)
@@ -39,7 +37,6 @@ class education(models.Model):
 
 
 class project(models.Model):
-    sno=models.CharField(max_length=50)
     email=models.EmailField(max_length=100)
     pname=models.CharField(max_length=50)
     pduration=models.CharField(max_length=100)
